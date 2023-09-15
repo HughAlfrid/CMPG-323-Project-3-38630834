@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\SuperStore P3",
+    "\\SuperStore P3\\SuperStore P3",
+    "\\SuperStore P3\\SuperStore P3\\Controllers"
   ],
+  "SelectedNode": "\\SuperStore P3\\EcoPower_Logistics.sln",
   "PreviewInSolutionExplorer": false
 }
