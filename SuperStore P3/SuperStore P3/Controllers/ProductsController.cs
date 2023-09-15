@@ -14,11 +14,11 @@ namespace Controllers
     [Authorize]
     public class ProductsController : Controller
     {
-        private readonly SuperStoreContext _context;
+        private readonly IProductsRepository productsRepository;
 
-        public ProductsController(SuperStoreContext context)
+        public ProductsController(IProductsRepository productsRepository)
         {
-            _context = context;
+            _context = productsRepository;
         }
 
         // GET: Products
