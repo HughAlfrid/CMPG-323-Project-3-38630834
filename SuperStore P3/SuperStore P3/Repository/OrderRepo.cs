@@ -7,11 +7,6 @@ namespace EcoPower_Logistics.Repository
     {
         public OrderRepo(SuperStoreContext context): base(context)
         {
-
         }
-        //public Order GetOrder()
-        //{
-           
-        //}
     }
 }

@@ -3,8 +3,9 @@
     "",
     "\\SuperStore P3",
     "\\SuperStore P3\\SuperStore P3",
-    "\\SuperStore P3\\SuperStore P3\\Controllers"
+    "\\SuperStore P3\\SuperStore P3\\Controllers",
+    "\\SuperStore P3\\SuperStore P3\\Repository"
   ],
-  "SelectedNode": "\\SuperStore P3\\SuperStore P3\\Controllers\\HomeController.cs",
+  "SelectedNode": "\\SuperStore P3\\EcoPower_Logistics.sln",
   "PreviewInSolutionExplorer": false
 }
