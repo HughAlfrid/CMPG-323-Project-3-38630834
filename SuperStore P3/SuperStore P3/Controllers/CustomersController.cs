@@ -14,9 +14,9 @@ namespace Controllers
     [Authorize]
     public class CustomersController : Controller
     {
-        private readonly SuperStoreContext _context;
+        private readonly ICustomerRepository customerRepository;
 
-        public CustomersController(SuperStoreContext context)
+        public CustomersController(ICustomerRepository customerRepository)
         {
             _context = context;
         }

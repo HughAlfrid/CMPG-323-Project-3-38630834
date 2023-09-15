@@ -9,29 +9,26 @@ using Microsoft.EntityFrameworkCore;
 using Models;
 using Data;
 using EcoPower_Logistics.Repository;
+using SQLitePCL;
 
 namespace Controllers
 {
     [Authorize]
     public class OrdersController : Controller
     {
-        private readonly SuperStoreContext _context;
         private readonly IOrderRepository orderRepository;
 
-        public OrdersController(SuperStoreContext context, IOrderRepository orderRepository)
+
+        public OrdersController(IOrderRepository orderRepository)
         {
-            _context = context;
-            this.orderRepository = orderRepository;
+            _context = orderRepository;
         }
 
-        // GET: Orders
-        //public IActionResult Index()
-        //{
-        //    OrderRepo orderRepo = new OrderRepo();
-        //    var Results = orderRepo.GetAll();
-
-        //    return View(Results);
-        //}
+       // GET: Orders
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.GetAll());
+        }
 
         // GET: Orders/Details/5
         public async Task<IActionResult> Details(int? id)

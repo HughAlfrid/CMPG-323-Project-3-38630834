@@ -2,7 +2,7 @@
 
 namespace EcoPower_Logistics.Repository
 {
-    public interface IOrderRepository : IGenericRepository<Order>
+    public interface IProductsRepository : IGenericRepository<Product>
     {
     }
 }
