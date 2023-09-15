@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\SuperStore P3",
+    "\\SuperStore P3\\SuperStore P3",
+    "\\SuperStore P3\\SuperStore P3\\Views",
+    "\\SuperStore P3\\SuperStore P3\\Views\\Shared"
   ],
+  "SelectedNode": "\\SuperStore P3\\SuperStore P3\\Views\\Shared\\_Layout.cshtml",
   "PreviewInSolutionExplorer": false
 }
