@@ -15,7 +15,7 @@ namespace Controllers
     [Authorize]
     public class ProductsController : Controller
     {
-        private readonly IProductsRepository _context;
+        protected readonly IProductsRepository _context;
 
         public ProductsController(IProductsRepository productsRepository)
         {
@@ -25,9 +25,11 @@ namespace Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
-            return _context.Products != null ?
-                        View(await _context.Products.ToListAsync()) :
-                        Problem("Entity set 'SuperStoreContext.Products'  is null.");
+
+            var results = _context.GetAll();
+
+            return View(results);
+
         }
 
         // GET: Products/Details/5

@@ -16,9 +16,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepo<>));
-builder.Services.AddTransient<ICustomerRepository, CustomerRepo>();
-builder.Services.AddTransient<IOrderRepository, OrderRepo>();
-builder.Services.AddTransient<IProductsRepository, ProductRepo>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepo>();
+builder.Services.AddScoped<IOrderRepository, OrderRepo>();
+builder.Services.AddScoped<IProductsRepository, ProductRepo>();
 
 var app = builder.Build();
 

@@ -29,7 +29,7 @@ namespace EcoPower_Logistics.Repository
 
         public IEnumerable<T> GetAll()
         {
-            return _context.Set<T>().ToArray();
+            return _context.Set<T>().ToList();
         }
 
         public T GetByID(int id)

@@ -15,7 +15,7 @@ namespace Controllers
     [Authorize]
     public class CustomersController : Controller
     {
-        private readonly ICustomerRepository _context;
+        protected readonly ICustomerRepository _context;
 
         public CustomersController(ICustomerRepository customerRepository)
         {
@@ -25,21 +25,19 @@ namespace Controllers
         // GET: Customers
         public async Task<IActionResult> Index()
         {
-            return _context.Customers != null ?
-                        View(await _context.Customers.ToListAsync()) :
-                        Problem("Entity set 'SuperStoreContext.Customers'  is null.");
+            var results = _context.GetAll();
+            return View(results);
         }
 
         // GET: Customers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Customers == null)
+            if (id == null || _context.GetAll() == null)
             {
                 return NotFound();
             }
 
-            var customer = await _context.Customers
-                .FirstOrDefaultAsync(m => m.CustomerId == id);
+            var customer = _context.GetByID(id.Value);
             if (customer == null)
             {
                 return NotFound();
@@ -73,12 +71,12 @@ namespace Controllers
         // GET: Customers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Customers == null)
+            if (id == null || _context.GetAll() == null)
             {
                 return NotFound();
             }
 
-            var customer = await _context.Customers.FindAsync(id);
+            var customer = await _context.GetAll().FindAsync(id);
             if (customer == null)
             {
                 return NotFound();
@@ -124,13 +122,12 @@ namespace Controllers
         // GET: Customers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Customers == null)
+            if (id == null || _context.GetAll() == null)
             {
                 return NotFound();
             }
 
-            var customer = await _context.Customers
-                .FirstOrDefaultAsync(m => m.CustomerId == id);
+            var customer = await _context.GetAll().FirstOrDefaultAsync(m => m.CustomerId == id);
             if (customer == null)
             {
                 return NotFound();
@@ -144,14 +141,14 @@ namespace Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Customers == null)
+            if (_context.GetAll() == null)
             {
                 return Problem("Entity set 'SuperStoreContext.Customers'  is null.");
             }
-            var customer = await _context.Customers.FindAsync(id);
+            var customer = await _context.GetAll().FindAsync(id);
             if (customer != null)
             {
-                _context.Customers.Remove(customer);
+                _context.GetAll().Remove(customer);
             }
 
             await _context.SaveChangesAsync();
@@ -160,7 +157,7 @@ namespace Controllers
 
         private bool CustomerExists(int id)
         {
-            return (_context.Customers?.Any(e => e.CustomerId == id)).GetValueOrDefault();
+            return (_context.GetAll()?.Any(e => e.CustomerId == id)).GetValueOrDefault();
         }
     }
 }
