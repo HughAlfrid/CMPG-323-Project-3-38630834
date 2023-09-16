@@ -9,11 +9,11 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = EcoPower_Logistics
 build_property.RootNamespace = EcoPower_Logistics
-build_property.ProjectDir = C:\Users\User\source\repos\CMPG-323-Project-3-38630834\SuperStore P3\SuperStore P3\
+build_property.ProjectDir = C:\Users\User\Source\Repos\CMPG-323-Project-3-38630834\SuperStore P3\SuperStore P3\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\User\source\repos\CMPG-323-Project-3-38630834\SuperStore P3\SuperStore P3
+build_property.MSBuildProjectDirectory = C:\Users\User\Source\Repos\CMPG-323-Project-3-38630834\SuperStore P3\SuperStore P3
 build_property._RazorSourceGeneratorDebug = 
 
 [C:/Users/User/source/repos/CMPG-323-Project-3-38630834/SuperStore P3/SuperStore P3/Areas/Identity/Pages/_ViewStart.cshtml]

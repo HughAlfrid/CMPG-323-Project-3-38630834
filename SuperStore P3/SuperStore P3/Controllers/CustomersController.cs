@@ -8,17 +8,18 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Data;
 using Models;
+using EcoPower_Logistics.Repository;
 
 namespace Controllers
 {
     [Authorize]
     public class CustomersController : Controller
     {
-        private readonly ICustomerRepository customerRepository;
+        private readonly ICustomerRepository _context;
 
         public CustomersController(ICustomerRepository customerRepository)
         {
-            _context = context;
+            _context = customerRepository;
         }
 
         // GET: Customers

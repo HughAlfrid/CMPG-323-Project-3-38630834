@@ -16,8 +16,7 @@ namespace Controllers
     [Authorize]
     public class OrdersController : Controller
     {
-        private readonly IOrderRepository orderRepository;
-
+        private readonly IOrderRepository _context;
 
         public OrdersController(IOrderRepository orderRepository)
         {

@@ -2,7 +2,7 @@
 
 namespace EcoPower_Logistics.Repository
 {
-    public interface ICustomerRepositorye : IGenericRepository<Customer>
+    public interface ICustomerRepository : IGenericRepository<Customer>
     {
     }
 }
