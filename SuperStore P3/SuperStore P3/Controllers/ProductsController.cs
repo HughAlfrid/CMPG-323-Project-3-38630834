@@ -23,25 +23,24 @@ namespace Controllers
         }
 
         // GET: Products
-        public async Task<IActionResult> Index()
+        public Task<IActionResult> Index()
         {
 
             var results = _context.GetAll();
 
-            return View(results);
+            return Task.FromResult<IActionResult>(View(results));
 
         }
 
         // GET: Products/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public  IActionResult Details(int? id)
         {
-            if (id == null || _context.Products == null)
+            if (id == null || _context.GetAll() == null)
             {
                 return NotFound();
             }
 
-            var product = await _context.Products
-                .FirstOrDefaultAsync(m => m.ProductId == id);
+            var product = _context.GetByID(id.Value); 
             if (product == null)
             {
                 return NotFound();
@@ -66,21 +65,20 @@ namespace Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(product);
-                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(product);
         }
 
         // GET: Products/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
-            if (id == null || _context.Products == null)
+            if (id == null || _context.GetAll() == null)
             {
                 return NotFound();
             }
 
-            var product = await _context.Products.FindAsync(id);
+            var product = _context.GetByID(id.Value);
             if (product == null)
             {
                 return NotFound();
@@ -105,7 +103,6 @@ namespace Controllers
                 try
                 {
                     _context.Update(product);
-                    await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -124,15 +121,14 @@ namespace Controllers
         }
 
         // GET: Products/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
-            if (id == null || _context.Products == null)
+            if (id == null || _context.GetAll() == null)
             {
                 return NotFound();
             }
 
-            var product = await _context.Products
-                .FirstOrDefaultAsync(m => m.ProductId == id);
+            var product = _context.GetByID(id.Value);
             if (product == null)
             {
                 return NotFound();
@@ -146,23 +142,21 @@ namespace Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Products == null)
+            if (_context.GetAll() == null)
             {
                 return Problem("Entity set 'SuperStoreContext.Products'  is null.");
             }
-            var product = await _context.Products.FindAsync(id);
+            var product = _context.GetByID(id);
             if (product != null)
             {
-                _context.Products.Remove(product);
+                _context.Remove(product);
             }
-
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ProductExists(int id)
         {
-            return (_context.Products?.Any(e => e.ProductId == id)).GetValueOrDefault();
+            return (_context.GetAll()?.Any(e => e.ProductId == id)).GetValueOrDefault();
         }
     }
 }

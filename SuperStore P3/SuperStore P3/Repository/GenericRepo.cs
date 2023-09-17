@@ -40,16 +40,19 @@ namespace EcoPower_Logistics.Repository
         public void Remove(T entity)
         {
             _context.Set<T>().Remove(entity);
+            _context.SaveChangesAsync();
         }
 
         public void RemoveRange(IEnumerable<T> entities)
         {
             _context.Set<T>().RemoveRange(entities);
+            _context.SaveChangesAsync();
         }
 
         public void Update(T entity)
         {
             _context.Set<T>().Update(entity);
+            _context.SaveChangesAsync();
         }
     }
 }
